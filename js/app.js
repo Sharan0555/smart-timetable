@@ -27,7 +27,7 @@ let pendingGoogleProfile = null;
 // TODO: Replace with your Google Client ID from console.cloud.google.com
 // Create project → Enable "Google Identity" API → OAuth 2.0 Credentials
 // Authorized JS origins: http://localhost:8080, http://127.0.0.1:5500, https://smartclassscheduler.netlify.app
-const GOOGLE_CLIENT_ID = "341867545002-i2jeif88kpp8ivqklrgavq32p0thpruf.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "341867545002-hqbp6nbnfmto828r0d48u7880gmk01b0.apps.googleusercontent.com";
 
 // ===== AUTH =====
 function initAuth() {
