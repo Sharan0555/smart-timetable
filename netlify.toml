@@ -1,0 +1,6 @@
+# Static Smart Timetable (vanilla HTML / CSS / JS at repo root)
+[build]
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"

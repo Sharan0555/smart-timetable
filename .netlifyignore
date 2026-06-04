@@ -1,0 +1,11 @@
+frontend/
+backend/
+node_modules/
+shared/
+docs/
+.env*
+package.json
+package-lock.json
+tsconfig.base.json
+README.md
+{css,js,data,pages}/

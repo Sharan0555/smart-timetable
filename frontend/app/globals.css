@@ -1,0 +1,829 @@
+:root {
+  --bg: #07111f;
+  --bg-soft: #0d1b31;
+  --card: rgba(13, 27, 49, 0.82);
+  --card-border: rgba(140, 171, 255, 0.16);
+  --text: #edf3ff;
+  --muted: #9fb0cf;
+  --primary: #6ea8fe;
+  --primary-strong: #85f0d2;
+  --danger: #ff6b8b;
+  --warning: #ffcf5c;
+  --success: #5ce0a8;
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.34);
+  color-scheme: dark;
+}
+
+body[data-theme='light'] {
+  --bg: #f5f7fb;
+  --bg-soft: #ffffff;
+  --card: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(26, 46, 84, 0.12);
+  --text: #10223d;
+  --muted: #5c6b85;
+  --primary: #2254d4;
+  --primary-strong: #45b4a8;
+  --shadow: 0 18px 50px rgba(22, 37, 72, 0.12);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(110, 168, 254, 0.18), transparent 35%),
+    radial-gradient(circle at top right, rgba(133, 240, 210, 0.16), transparent 30%),
+    linear-gradient(180deg, #07111f 0%, #0c1728 50%, #07111f 100%);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 28px 20px;
+  border-right: 1px solid var(--card-border);
+  background: rgba(5, 10, 20, 0.45);
+  backdrop-filter: blur(22px);
+}
+
+.brand {
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.brand-mark {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.brand-mark img {
+  object-fit: cover;
+}
+
+.brand-mark-lg {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+}
+
+.home-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.home-brand h1 {
+  margin: 0;
+}
+
+.home-brand .muted {
+  margin-top: 6px;
+}
+
+.home-brand-login {
+  align-items: flex-start;
+}
+
+.nav {
+  display: grid;
+  gap: 10px;
+}
+
+.nav a {
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: var(--muted);
+  transition: all 160ms ease;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--text);
+  border-color: var(--card-border);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.main {
+  padding: 28px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+}
+
+.hero p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  max-width: 760px;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+}
+
+.grid.cards {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+}
+
+.card .value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.section {
+  margin-top: 24px;
+}
+
+.section h3 {
+  margin-bottom: 12px;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid var(--card-border);
+}
+
+.badge.success { background: rgba(92, 224, 168, 0.12); color: var(--success); }
+.badge.warning { background: rgba(255, 207, 92, 0.12); color: var(--warning); }
+.badge.danger { background: rgba(255, 107, 139, 0.12); color: var(--danger); }
+.badge.primary { background: rgba(110, 168, 254, 0.12); color: var(--primary); }
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  color: var(--text);
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-strong));
+  color: #06111d;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.button.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+}
+
+.button.button-sm {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.chip.active {
+  color: var(--text);
+  background: rgba(110, 168, 254, 0.14);
+}
+
+.active-chip {
+  background: rgba(110, 168, 254, 0.18) !important;
+  color: var(--text) !important;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: min(100%, 460px);
+}
+
+.scheduler-workspace {
+  display: grid;
+  gap: 22px;
+}
+
+.scheduler-actions,
+.scheduler-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.scheduler-stepper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.scheduler-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.scheduler-step span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.scheduler-step.active {
+  color: var(--text);
+  background: rgba(110, 168, 254, 0.14);
+  border-color: rgba(110, 168, 254, 0.35);
+}
+
+.scheduler-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.scheduler-section {
+  display: grid;
+  gap: 18px;
+}
+
+.two-up {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.scheduler-generate-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.scheduler-message {
+  width: fit-content;
+}
+
+.period-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.period-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.period-main {
+  display: grid;
+  gap: 6px;
+}
+
+.period-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.period-meta {
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.period-meta input {
+  max-width: 140px;
+}
+
+.period-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.scheduler-table,
+.timetable-grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scheduler-table th,
+.scheduler-table td,
+.timetable-grid th,
+.timetable-grid td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+  vertical-align: top;
+}
+
+.scheduler-table tr.editing-row td,
+.scheduler-table tr.editing-row th {
+  background: rgba(110, 168, 254, 0.08);
+}
+
+.scheduler-table tr.saved-row td,
+.scheduler-table tr.saved-row th {
+  background: rgba(92, 224, 168, 0.08);
+}
+
+.scheduler-table th,
+.timetable-grid th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.scheduler-table input,
+.scheduler-table select,
+.timetable-grid input,
+.timetable-grid select,
+.period-meta input,
+.day-availability-pill select,
+.stacked-fields input,
+.field select[multiple] {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text);
+}
+
+.day-availability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.day-availability-pill {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.mini-day-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.stacked-fields {
+  display: grid;
+  gap: 8px;
+}
+
+.stacked-field-row,
+.subject-config-row {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.subject-config-row {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  align-items: end;
+}
+
+.stacked-field-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.inline-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.timetable-header-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0 18px;
+}
+
+.timetable-header-block {
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.timetable-header-block h4 {
+  margin: 0 0 10px;
+  font-size: 0.98rem;
+}
+
+.compact-list {
+  gap: 8px;
+}
+
+.compact-item {
+  padding: 10px 12px;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.timetable-scroll {
+  max-width: 100%;
+}
+
+.timetable-grid thead th {
+  position: sticky;
+  top: 0;
+  background: rgba(9, 17, 31, 0.96);
+  z-index: 1;
+}
+
+.row-label {
+  min-width: 180px;
+}
+
+.row-label small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.special-cell,
+.lecture-cell {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.full-width-row .row-label {
+  vertical-align: middle;
+}
+
+.anthem-row-label {
+  border: 0;
+  background: transparent;
+}
+
+.anthem-row-label span {
+  display: block;
+  min-height: 1px;
+}
+
+.full-width-cell {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.3px;
+  min-height: 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.full-width-cell strong,
+.full-width-cell span {
+  display: block;
+}
+
+.anthem-cell {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.anthem-row .row-label {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.special-cell {
+  color: var(--text);
+}
+
+.special-cell.warning {
+  background: rgba(255, 207, 92, 0.12);
+}
+
+.special-cell.success {
+  background: rgba(92, 224, 168, 0.12);
+}
+
+.lecture-cell {
+  min-width: 180px;
+}
+
+.lecture-cell.substituted {
+  background: rgba(255, 207, 92, 0.18);
+}
+
+.lecture-cell.free {
+  background: rgba(255, 107, 139, 0.12);
+}
+
+.lecture-cell.practical {
+  background: rgba(133, 240, 210, 0.08);
+}
+
+.lecture-cell .cell-body {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.inline-confirm {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 107, 139, 0.28);
+  background: rgba(255, 107, 139, 0.08);
+}
+
+.saved-flash {
+  margin-top: 8px;
+  display: inline-flex;
+}
+
+.workload-stack {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.workload-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.workload-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--primary), var(--primary-strong));
+}
+
+@media print {
+  .sidebar,
+  .scheduler-stepper,
+  .scheduler-actions,
+  .scheduler-inline-actions button,
+  .button.secondary,
+  .topbar .button,
+  .scheduler-section .card.form:not(.scheduler-generate-card),
+  .scheduler-message,
+  .badge.warning {
+    display: none !important;
+  }
+
+  .timetable-output {
+    display: block !important;
+  }
+
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .main {
+    padding: 0;
+  }
+
+  .card {
+    box-shadow: none;
+  }
+
+  .timetable-grid thead th {
+    position: static;
+  }
+}
+
+@media (max-width: 960px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .two-up,
+  .scheduler-stepper,
+  .scheduler-summary-grid,
+  .day-availability-grid,
+  .mini-day-grid,
+  .timetable-header-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scheduler-inline-actions {
+    width: 100%;
+  }
+
+  .scheduler-inline-actions .button {
+    flex: 1 1 120px;
+  }
+
+  .scheduler-generate-card,
+  .period-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
